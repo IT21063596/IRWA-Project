@@ -47,37 +47,6 @@ st.image('img2.png', use_column_width=True)
 st.header("Movie Recommendation")
 
 
-# Sample user data
-user_name = "John Doe"
-user_id = "12345"
-user_history = ["Avatar", "Age OF Ultron", "Happy Couple", "The Avengers", "The Dark Knight"]
-
-# Sidebar content
-st.sidebar.subheader("User Information")
-# Add an empty space for spacing
-st.sidebar.text("")
-
-st.sidebar.text(f"User Name: {user_name}")
-st.sidebar.text(f"User ID: {user_id}")
-# Add an empty space for spacing
-st.sidebar.text("")
-
-st.sidebar.subheader("User History")
-# Add an empty space for spacing
-st.sidebar.text("")
-
-for movie in user_history:
-    st.sidebar.text(movie)
-# Add an empty space for spacing
-st.sidebar.text("")
-
-# Add an empty space for spacing
-st.sidebar.text("")
-
-# Logout button at the bottom of the sidebar
-st.sidebar.button("Logout")
-
-
 # Main content
 movies = pickle.load(open('artifacts/movie_list.pkl', 'rb'))
 similarity = pickle.load(open('artifacts/similarity.pkl', 'rb'))
@@ -109,38 +78,32 @@ st.write(
 st.sidebar.text("")
 
 # Center the "Show recommendation" button
-if st.button('Show recommendation', key='centered-button'):
+if st.button('Show my recommendations', key='centered-button'):
     recommended_movies_name, recommended_movies_poster = recommend(selected_movie)
     col1, col2, col3 = st.columns(3)
     col4, col5, col6 = st.columns(3)
 
     with col1:
-        st.text(recommended_movies_name[0])
         st.image(recommended_movies_poster[0])
-
+        st.text(recommended_movies_name[0])
+        
     with col2:
-        st.text(recommended_movies_name[1])
         st.image(recommended_movies_poster[1])
-
+        st.text(recommended_movies_name[1])
+        
     with col3:
-        st.text(recommended_movies_name[2])
         st.image(recommended_movies_poster[2])
+        st.text(recommended_movies_name[2])
 
     with col4:
-        st.text(recommended_movies_name[3])
         st.image(recommended_movies_poster[3])
-
+        st.text(recommended_movies_name[3])
+        
     with col5:
-        st.text(recommended_movies_name[4])
         st.image(recommended_movies_poster[4])
-
+        st.text(recommended_movies_name[4])
+        
     with col6:
-        st.text(recommended_movies_name[5])
         st.image(recommended_movies_poster[5])
-
-    overall_rating = st.slider('Recommendations satisfaction', 0, 5, 0) # Add an overall rating slider for the user experience
-
-# Feedback section at the bottom
-st.subheader("Feedback")
-user_feedback = st.text_area("Please provide your feedback here", height=100)
-submit_feedback = st.button("Submit Feedback")
+        st.text(recommended_movies_name[5])
+        
